@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #2a2a40;
+            color: #e0e0e0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        form {
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #bb86fc;
+            color: #2a2a40;
+            border: none;
+            border-radius: 5px;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+        img {
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 style="color: #bb86fc;">QR Code Generator</h1>
+    <p style="color: #e0e0e0;">Gib einen Text ein und drücke auf "QR Code generieren":</p>
+
+    <!-- Formular -->
+    <form method="POST">
+        <input type="text" name="text_data" placeholder="Gib hier deinen Text ein" required>
+        <button type="submit">QR Code generieren</button>
+    </form>
+
+    <!-- QR-Code-Container -->
+    {% if qr_code_image %}
+    <div id="qrcode">
+        <h3 style="color: #bb86fc;">Dein QR Code:</h3>
+        <img src="data:image/png;base64,{{ qr_code_image }}" alt="QR Code">
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
